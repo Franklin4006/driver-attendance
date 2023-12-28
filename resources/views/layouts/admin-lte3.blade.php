@@ -6,3 +6,5 @@
 </main>
 
 @include('layouts.footer')
+@yield('addscript')
+
