@@ -33,3 +33,9 @@ Route::get('drivers/delete/{id}', [DriverController::class, 'delete']);
 
 Route::post('attendance/punch-in', [AttendanceController::class, 'punch_in']);
 
+
+Route::get('attendance', [AttendanceController::class, 'index']);
+Route::get('attendance/fetch', [AttendanceController::class, 'fetch']);
+Route::post('attendance/create', [AttendanceController::class, 'create']);
+Route::get('attendance/fetch-edit/{id}', [AttendanceController::class, 'fetch_edit']);
+Route::get('attendance/delete/{id}', [AttendanceController::class, 'delete']);

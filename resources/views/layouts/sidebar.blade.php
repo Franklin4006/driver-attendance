@@ -3,12 +3,20 @@ $url_segments = request()->segments();
 
 $home = '';
 $drivers = '';
+$attendance = '';
+$advance = '';
 
 if (isset($url_segments[0]) && ($url_segments[0] == 'home')) {
     $home = 'active';
 }
 if (isset($url_segments[0]) && ($url_segments[0] == 'drivers')) {
     $drivers = 'active';
+}
+if (isset($url_segments[0]) && ($url_segments[0] == 'attendance')) {
+    $attendance = 'active';
+}
+if (isset($url_segments[0]) && ($url_segments[0] == 'advance')) {
+    $advance = 'active';
 }
 
 ?>
@@ -56,6 +64,24 @@ if (isset($url_segments[0]) && ($url_segments[0] == 'drivers')) {
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ url('attendance') }}" class="nav-link {{ $attendance }}">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>
+                            Attendance
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url('advance') }}" class="nav-link {{ $advance }}">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>
+                            Advance
+                        </p>
+                    </a>
+                </li>
+
+
 
             </ul>
         </nav>

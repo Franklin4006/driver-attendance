@@ -26,6 +26,9 @@
         {
             color: rgb(216, 2, 2);
         }
+        th,td {
+            white-space: nowrap;
+        }
     </style>
 </head>
 

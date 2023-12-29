@@ -49,7 +49,7 @@ class DriverController extends Controller
 
     public function fetch()
     {
-        $data = User::select('id', 'name','email', 'mobile','salary');
+        $data = User::select('id', 'name','email', 'mobile','salary')->where('is_admin','No');
         return Datatables::of($data)
             ->addIndexColumn()
             ->addColumn('action', function ($row) {

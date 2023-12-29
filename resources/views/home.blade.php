@@ -139,10 +139,6 @@
                 </div>
             </div>
 
-            <iframe width="100%" height="500px"
-                src="https://maps.google.com/maps?q=10.8502,78.6982&hl=es&z=14&amp;output=embed">
-            </iframe>
-
         </section>
     </div>
 
