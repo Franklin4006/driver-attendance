@@ -53,7 +53,13 @@ class AttendanceController extends Controller
 
     public function fetch()
     {
-        $data = Attendance::with('user')->get();
+
+        if(auth()->user()->is_admin == "Yes")
+        {
+            $data = Attendance::with('user')->orderBy('date', 'DESC')->get();
+        }else{
+            $data = Attendance::with('user')->where('user_id', auth()->user()->id)->orderBy('date', 'DESC')->get();
+        }
         return Datatables::of($data)
             ->addIndexColumn()
             ->addColumn('action', function ($row) {

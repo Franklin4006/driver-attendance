@@ -35,8 +35,8 @@ class HomeController extends Controller
 
         /* This Month */
 
-        $this_month_advance = Advance::where('date', ">=" , date("Y-m-01"))->where("user_id", $user_id)->sum('amount');
-        $this_month_workingdays = Attendance::where('date', ">=" , date("Y-m-01"))->where("user_id", $user_id)->get()->count();
+        $this_month_advance = Advance::where('date', ">=", date("Y-m-01"))->where("user_id", $user_id)->sum('amount');
+        $this_month_workingdays = Attendance::where('date', ">=", date("Y-m-01"))->where("user_id", $user_id)->get()->count();
 
         $this_month['workingdays'] = $this_month_workingdays;
         $this_month['salary'] = ($this_month_workingdays * auth()->user()->salary);
@@ -45,8 +45,8 @@ class HomeController extends Controller
 
         /* Last Minth */
 
-        $last_month_advance = Advance::where('date', ">=" , date("Y-m-01", strtotime('-1 month')))->where('date', "<=" , date("Y-m-t", strtotime('-1 month')))->where("user_id", $user_id)->sum('amount');
-        $last_month_workingdays = Attendance::where('date', ">=" , date("Y-m-01", strtotime('-1 month')))->where('date', "<=" , date("Y-m-t", strtotime('-1 month')))->where("user_id", $user_id)->get()->count();
+        $last_month_advance = Advance::where('date', ">=", date("Y-m-01", strtotime('-1 month')))->where('date', "<=", date("Y-m-t", strtotime('-1 month')))->where("user_id", $user_id)->sum('amount');
+        $last_month_workingdays = Attendance::where('date', ">=", date("Y-m-01", strtotime('-1 month')))->where('date', "<=", date("Y-m-t", strtotime('-1 month')))->where("user_id", $user_id)->get()->count();
 
         $last_month['workingdays'] = $last_month_workingdays;
         $last_month['salary'] = ($last_month_workingdays * auth()->user()->salary);

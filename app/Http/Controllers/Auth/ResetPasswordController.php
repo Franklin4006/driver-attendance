@@ -27,4 +27,8 @@ class ResetPasswordController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+    public function __construct()
+    {
+        date_default_timezone_set("Asia/Calcutta");
+    }
 }

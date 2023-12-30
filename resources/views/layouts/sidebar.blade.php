@@ -5,18 +5,22 @@ $home = '';
 $drivers = '';
 $attendance = '';
 $advance = '';
+$salary = '';
 
-if (isset($url_segments[0]) && ($url_segments[0] == 'home')) {
+if (isset($url_segments[0]) && $url_segments[0] == 'home') {
     $home = 'active';
 }
-if (isset($url_segments[0]) && ($url_segments[0] == 'drivers')) {
+if (isset($url_segments[0]) && $url_segments[0] == 'drivers') {
     $drivers = 'active';
 }
-if (isset($url_segments[0]) && ($url_segments[0] == 'attendance')) {
+if (isset($url_segments[0]) && $url_segments[0] == 'attendance') {
     $attendance = 'active';
 }
-if (isset($url_segments[0]) && ($url_segments[0] == 'advance')) {
+if (isset($url_segments[0]) && $url_segments[0] == 'advance') {
     $advance = 'active';
+}
+if (isset($url_segments[0]) && $url_segments[0] == 'salary') {
+    $salary = 'active';
 }
 
 ?>
@@ -56,17 +60,19 @@ if (isset($url_segments[0]) && ($url_segments[0] == 'advance')) {
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="{{ url('drivers') }}" class="nav-link {{ $drivers }}">
-                        <i class="nav-icon fas fa-users"></i>
-                        <p>
-                            Drivers
-                        </p>
-                    </a>
-                </li>
+                @if (auth()->user()->is_admin == 'Yes')
+                    <li class="nav-item">
+                        <a href="{{ url('drivers') }}" class="nav-link {{ $drivers }}">
+                            <i class="nav-icon fas fa-users"></i>
+                            <p>
+                                Drivers
+                            </p>
+                        </a>
+                    </li>
+                @endif
                 <li class="nav-item">
                     <a href="{{ url('attendance') }}" class="nav-link {{ $attendance }}">
-                        <i class="nav-icon fas fa-users"></i>
+                        <i class="nav-icon fas fa-user-check"></i>
                         <p>
                             Attendance
                         </p>
@@ -74,12 +80,22 @@ if (isset($url_segments[0]) && ($url_segments[0] == 'advance')) {
                 </li>
                 <li class="nav-item">
                     <a href="{{ url('advance') }}" class="nav-link {{ $advance }}">
-                        <i class="nav-icon fas fa-users"></i>
+                        <i class="nav-icon far fa-money-bill-alt"></i>
                         <p>
                             Advance
                         </p>
                     </a>
                 </li>
+                @if (auth()->user()->is_admin == 'Yes')
+                    <li class="nav-item">
+                        <a href="{{ url('salary') }}" class="nav-link {{ $salary }}">
+                            <i class="nav-icon far fa-money-bill-alt"></i>
+                            <p>
+                                Salary
+                            </p>
+                        </a>
+                    </li>
+                @endif
 
 
 

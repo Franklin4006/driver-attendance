@@ -19,4 +19,8 @@ class ForgotPasswordController extends Controller
     */
 
     use SendsPasswordResetEmails;
+    public function __construct()
+    {
+        date_default_timezone_set("Asia/Calcutta");
+    }
 }

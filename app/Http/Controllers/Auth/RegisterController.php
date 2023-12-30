@@ -39,6 +39,7 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+        date_default_timezone_set("Asia/Calcutta");
     }
 
     /**
